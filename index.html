@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        #briefly{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        #briefly > div {
+            margin-left: 10px;
+        }
+
+        #briefly > div> img {
+            width: 300px;
+        }
+
+        #briefly > div> p {
+            text-align: center;
+        }
+
+        #detail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #detail > div> img {
+            width: 850px;
+            margin: auto;
+        }
+
+        #detail > div> p {
+            width: 850px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <div id = "briefly"> 
+        <!-- <div>
+            <img src="img/mir.jpg" alt="">
+            <p>Мир</p>
+        </div>
+        <div>
+            <img src="img/red.jpg" alt="">
+            <p>Красный костел</p>
+        </div>
+        <div>
+            <img src="img/troi.jpg" alt="">
+            <p>Троицкое</p>
+        </div> -->
+    </div>
+
+    <div id = "detail">
+        <!-- <img src="img/mir.jpg" alt="">
+        <p>Построенный в начале XVI в. магнатом Ю. И. Ильиничем замок стал первым частнособственническим замком на
+            землях Белоруссии
+        </p> -->
+    </div>
+
+<script>
+    
+
+    let s1 = "", s2="", img = "", name = "", text = "";
+
+    let arrObj = [
+        { img: "mir.jpg", name: "Мир", text: 1 }, 
+        { img: "troi.jpg", name: "Троицкое", text: 2 }, 
+        { img: "red.jpg", name: "Костел", text: 3 },
+    ];
+
+    arrObj[0].text = "Построенный в начале XVI в. магнатом Ю. И. Ильиничем замок стал первым частнособственническим замком на землях Беларуси";
+    arrObj[1].text = "Исторический район города Минска, расположенный в северо-восточной части исторического центра на левом берегу реки Свислочь. Некогда являлся торгово-административным центром столицы Республики Беларусь";
+    arrObj[2].text = "Костёл святого Симеона и святой Елены, часто называемый также Красным костёлом — наиболее известный католический храм Минска.";
+
+
+    for (i=0; i<arrObj.length; i++) {
+       img = arrObj[i].img;
+       name = arrObj[i].name;
+       text = arrObj[i].text; 
+       
+
+    s1 += `
+        <div>
+        <img src="img/${img}" alt="" onclick = "zoomImg(${i})" ">
+        <p>${name}</p>
+        </div>
+        `;
+    }
+    briefly.innerHTML = s1;
+
+    
+
+    function zoomImg(index) {
+            s2 = `<div onclick = "this.hidden=true"><img src="img/${arrObj[index].img}" alt=""> <p>${text}</p></div>`;
+            detail.innerHTML = s2;
+        }
+
+   
+
+</script>
+
+</body>
+</html>
